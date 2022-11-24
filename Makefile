@@ -1,5 +1,10 @@
 all:
-	gcc -O3 llvm.c main.c -o benchmark
+	gcc -O3 llvm.c llvm-split-loop.c main.c -o benchmark
 
-run:
-	time ./benchmark
+clean:
+	rm benchmark
+
+run: all
+	time ./benchmark split
+	time ./benchmark llvm
+
