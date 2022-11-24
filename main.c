@@ -6,7 +6,7 @@ void benchmark_SLEB128() {
   uint8_t buffer[64];
   for (int64_t i = -100000000; i < 100000000; i++) {
     int size = encodeSLEB128(i, buffer);
-    signed_decode_result result = decodeSLEB128(buffer, buffer+64);
+    signed_decode_result result = decodeSLEB128(buffer, buffer+size);
     if (result.size != size) {
       fprintf(stderr, "Encoder and decoder disagree on the size.\n");
     }
@@ -22,7 +22,7 @@ void benchmark_split_loop_encodeSLEB128() {
   uint8_t buffer[64];
   for (int64_t i = -100000000; i < 100000000; i++) {
     int size = split_loop_encodeSLEB128(i, buffer);
-    signed_decode_result result = decodeSLEB128(buffer, buffer+64);
+    signed_decode_result result = decodeSLEB128(buffer, buffer+size);
     if (result.size != size) {
       fprintf(stderr, "Encoder and deoder disagree on the size.\n");
     }
