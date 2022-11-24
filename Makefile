@@ -9,7 +9,7 @@ assembly-clang:
 	clang -O3 -S llvm-split-loop.c
 
 clean:
-	rm benchmark benchmark-clang *~
+	rm -f benchmark benchmark-clang *~ llvm-split-loop.s
 
 run: all
 	time ./benchmark split
