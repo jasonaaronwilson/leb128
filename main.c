@@ -13,6 +13,8 @@ void benchmark_SLEB128() {
     if (result.number != i) {
       fprintf(stderr, "Encoder and decoder disagree on the value.\n");
     }
+    buffer[0] ^= 254;
+    buffer[1] ^= 254;
   }
 }
 
@@ -22,11 +24,13 @@ void benchmark_split_loop_encodeSLEB128() {
     int size = split_loop_encodeSLEB128(i, buffer);
     signed_decode_result result = decodeSLEB128(buffer, buffer+64);
     if (result.size != size) {
-      fprintf(stderr, "Encoder and decoder disagree on the size.\n");
+      fprintf(stderr, "Encoder and deoder disagree on the size.\n");
     }
     if (result.number != i) {
       fprintf(stderr, "Encoder and decoder disagree on the value.\n");
     }
+    buffer[0] ^= 254;
+    buffer[1] ^= 254;
   }
 }
 

@@ -2,6 +2,12 @@ all:
 	gcc -O3 llvm.c llvm-split-loop.c main.c -o benchmark
 	clang -O3 llvm.c llvm-split-loop.c main.c -o benchmark-clang
 
+assembly-gcc:
+	gcc -O3 -S llvm-split-loop.c
+
+assembly-clang:
+	clang -O3 -S llvm-split-loop.c
+
 clean:
 	rm benchmark benchmark-clang *~
 
