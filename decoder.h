@@ -5,11 +5,13 @@
 
 typedef struct {
   uint64_t number;
+  // Negative values mean an error occurred.
   int size;
 } unsigned_decode_result;
 
 typedef struct {
   uint64_t number;
+  // Negative values mean an error occurred.
   int size;
 } signed_decode_result;
 
@@ -21,3 +23,5 @@ extern signed_decode_result decodeSLEB128(const uint8_t *p, const uint8_t *end);
 extern unsigned split_loop_encodeSLEB128(int64_t Value, uint8_t *p);
 
 extern unsigned array_notation_encodeSLEB128(int64_t Value, uint8_t *p);
+
+extern unsigned parallel_encodeULEB128(int64_t Value, uint8_t *p);
