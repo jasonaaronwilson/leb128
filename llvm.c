@@ -87,6 +87,8 @@ signed_decode_result decodeSLEB128(const uint8_t *p, const uint8_t *end) {
     }
     Byte = *p;
     uint64_t Slice = Byte & 0x7f;
+    // This handles decoding padded numbers, otherwise we might be
+    // able to test very easily at the end of the loop.
     if ((Shift >= 64 && Slice != (Value < 0 ? 0x7f : 0x00)) ||
         (Shift == 63 && Slice != 0 && Slice != 0x7f)) {
       signed_decode_result result = { 0, ERROR_TOO_BIG };
