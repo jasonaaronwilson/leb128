@@ -1,6 +1,6 @@
 all:
-	gcc -O3 llvm.c llvm-split-loop.c main.c -o benchmark
-	clang -O3 llvm.c llvm-split-loop.c main.c -o benchmark-clang
+	gcc -O3 llvm.c llvm-split-loop.c array_notation.c main.c -o benchmark
+	clang -O3 llvm.c llvm-split-loop.c main.c array_notation.c -o benchmark-clang
 
 assembly-gcc:
 	gcc -O3 -S llvm-split-loop.c
@@ -14,6 +14,8 @@ clean:
 run: all
 	time ./benchmark split
 	time ./benchmark llvm
+	time ./benchmark array
 	time ./benchmark-clang split
 	time ./benchmark-clang llvm
+	time ./benchmark-clang array
 

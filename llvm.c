@@ -34,7 +34,8 @@ unsigned encodeSLEB128(int64_t Value, uint8_t *p) {
       Byte |= 0x80; // Mark this byte to show that more bytes will follow.
     *p++ = Byte;
   } while (More);
-   return (unsigned)(p - orig_p);
+  
+  return (unsigned)(p - orig_p);
 }
  
 /// Utility function to encode a ULEB128 value to a buffer. Returns
